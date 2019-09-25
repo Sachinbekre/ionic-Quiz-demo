@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="danger" class="ion-text-center">
+    <ion-title>
+      Review
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="row text-center">
+        <!-- <div class="col-4 cursor-pointer" *ngFor="let question of quiz.questions; let i = index;">
+          <div (click)="goTo(i)" class="p-3 mb-2 {{ isAns(question) == 'Answered'? 'background-color:#ffffff;': 'background-color:red;' }}">{{i + 1}}. {{ isAns(question) }}</div>
+        </div> -->
+      </div>
+      <ion-list>
+        <ion-item *ngFor="let question of quiz.questions; let i = index;">
+          <!-- <ion-icon [name]="item.icon" slot="start"></ion-icon> -->
+          {{i + 1}}. {{ isAns(question) }}
+          <!-- <div class="item-note" slot="end">
+            {{item.note}}
+          </div> -->
+        </ion-item>
+        <ion-button color="danger" size="medium" expand="block" (click)="goTo()">
+          Close
+        </ion-button>
+      </ion-list>
+</ion-content>

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Questions
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list style="background-color: #f1f2f2" class="ion-no-padding">
+    <ion-item class="top-header" lines='none' no-padding>
+      <ion-img src="assets/images/logo-small.png" style="padding: 4px"></ion-img>
+      <div>
+        <ion-label style="font-size: 12px">Sample Exam : 1234567</ion-label>
+      </div>
+      <div slot="end" no-padding>
+        <ion-label style="font-size: 12px">Test Sam : 1234567</ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
+  <ion-grid style="background-color: #D7D7D7">
+    <ion-row class="ion-text-center">
+      <ion-col size-xs="6" size-md="3" style="background-color: #E5E5E5">
+        <div>
+          <ion-label>Question</ion-label>
+        </div>
+        <div>
+            <ion-label>{{pager.index + 1}}</ion-label>
+          </div>
+      </ion-col>
+      <ion-col size-xs="6" size-md="3" style="background-color: #E5E5E5">
+        <div>
+          <ion-label>Time Remainig</ion-label>
+        </div>
+        <div>
+            <ion-label>{{ellapsedTime}} / {{duration}}</ion-label>
+          </div>
+      </ion-col>
+      <ion-col size-xs="6" size-md="3" style="background-color: #E5E5E5">
+        <div>
+          <ion-label>Question Answered</ion-label>
+        </div>
+        <div>
+            <ion-label>12</ion-label>
+          </div>
+      </ion-col>
+      <ion-col size-xs="6" size-md="3" style="background-color: #E5E5E5">
+        <div>
+          Question Unanswered
+        </div>
+        <div>
+            <ion-label>12</ion-label>
+          </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<ion-grid *ngFor="let question of filteredQuestions">
+  <ion-row>
+    <h6 class="font-weight-normal">{{pager.index + 1}}.<span [innerHTML]="question.name"></span>
+    </h6>
+  </ion-row>
+  <ion-row>
+      <ion-col size="12" size-md="6" size-lg="6" *ngFor="let option of question.options; let i = index">
+        <p class="ion-no-margin" style="background-color: #E5E5E5">
+            <input id="{{option.id}}" type="checkbox" [(ngModel)]="option.selected" (change)="onSelect(question, option);" />
+            {{i+1}}.<span class="span_style" >{{option.name}}</span>
+        </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <ion-button color="danger" *ngIf="config.allowBack" (click)="goTo(pager.index - 1);">
+          Back
+        </ion-button>
+        <ion-button color="danger" (click)="goTo(pager.index + 1);">
+          Next
+        </ion-button>
+      </ion-col>
+      <ion-col size="12">
+          <ion-button  size="medium" (click)="review()"  expand="block">Review</ion-button>
+          <ion-button color="success" size="medium" (click)="onSubmit()" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+</ion-grid>
+</ion-content>

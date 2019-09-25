@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>testConsole</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="back-grnd">
+    <form #form="ngForm" (ngSubmit)="login(form)">
+        <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div text-center>
+                <h3>Login</h3>
+              </div>
+              <div>
+              <!-- <ion-card> -->
+                  <ion-item>
+                    <ion-input name="accessCode"  placeholder="Please Enter Access Code" ngModel required></ion-input>
+                  </ion-item>
+                  <br>
+                  <ion-item>
+                    <ion-input  name="lastName"  placeholder="Please Enter Candidate LastName" ngModel required></ion-input>
+                  </ion-item>
+                  <br>
+                  <ion-item>
+                    <ion-input  name="candidateId"  placeholder="Please Enter Candidate ID" ngModel required></ion-input>
+                  </ion-item>
+                <!-- </ion-card> -->
+              </div>
+             
+              <div padding>
+                <ion-button color="danger" size="medium" type="submit" [disabled]="form.invalid" expand="block">Login</ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+</ion-content>
+
